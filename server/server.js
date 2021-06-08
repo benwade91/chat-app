@@ -7,19 +7,15 @@ const routes = require("./routes");
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+  cors: {
+    origin: '*',
+  }
+});
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users')
 app.use(routes);
-const httpProxy = require("http-proxy");
 
-httpProxy
-  .createProxyServer({
-    target: "http://localhost:3000",
-    ws: true,
-  })
-  .listen(80);
-  
 let interval;
 
 io.on("connection", (socket) => {
