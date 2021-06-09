@@ -4,7 +4,7 @@ const http = require("http");
 
 const port = process.env.PORT || 4001;
 const routes = require("./routes");
-
+const cors = require("cors");
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
@@ -15,6 +15,7 @@ const io = socketio(server, {
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users')
 app.use(routes);
+app.use(cors());
 
 let interval;
 
@@ -36,20 +37,28 @@ io.on("connection", (socket) => {
 
     socket.emit('message', { user: 'admin', text: `Welcome to the chat ${user.name}` });
     socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined the chat!` })
-    socket.join(user.join);
+    socket.join(user.room);
+
+    io.to(user.room).emit('roomData', {room: user.room, users: getUsersInRoom(user.room)})
     callback();
   });
 
   socket.on('sendMessage', (message, callback) => {
     const user = getUser(socket.id);
-    console.log(user, message);
+    console.log(user);
     io.to(user.room).emit('message', { user: user.name, text: message });
+    io.to(user.room).emit('roomData', {room: user.room, users: getUsersInRoom(user.room)})
 
     callback();
   })
 
   socket.on("disconnect", () => {
-    console.log("Client disconnected");
+    const user = removeUser(socket.id);
+
+    if(user){
+      io.to(user.room).emit('message', {user:'admin', text:`${user.name} disconnected...`})
+    }
+
     clearInterval(interval);
   });
 });

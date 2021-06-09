@@ -10,13 +10,14 @@ const Chat = ({ location }) => {
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState([]);
     const [messages, setMessages] = useState([]);
+    const [users, setUsers] = useState([]);
     const ENDPOINT = 'localhost:4001';
 
     useEffect(() => {
         const { name, room } = queryString.parse(location.search);
 
         socket = io(ENDPOINT)
-
+        
         setName(name);
         setRoom(room);
 
@@ -31,33 +32,39 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
         socket.on('message', (message) => {
-            console.log(message);
             setMessages([...messages, message])
         })
-    }, []);
+    }, [messages]);
+
+    useEffect(() => {
+        socket.on('roomData', (data) => {
+            setUsers(data.users);
+        })
+    }, [users]);
 
     const sendMessage = (event) => {
         event.preventDefault();
 
         if (message) {
-            setMessages([...messages, message])
+            // setMessages([...messages, message])
             socket.emit('sendMessage', message, () => setMessage(''))
         }
     }
 
-    console.log(message, messages);
+    console.log(users);
 
     return <>
         <div>
         <ScrollToBottom>
-            <ul>
-            {messages.map(message => console.log(message))}
-            </ul>
+            {messages.map((message, i) => <div key={i}>{message.text}</div>)}
         </ScrollToBottom>
             <input value={message}
                 onChange={event => setMessage(event.target.value)}
                 onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
             />
+        </div>
+        <div>
+            {users.map(user => <p key={user.id}>{user.name}</p>)}
         </div>
     </>
 }

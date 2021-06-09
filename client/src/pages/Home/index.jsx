@@ -10,7 +10,7 @@ const [room, setRoom] = useState('')
             <h1>Hello {name}</h1>
             <div><input type="text" value={name} onChange={e => setName(e.target.value)} /></div>
             <div><input type="text" value={room} onChange={e => setRoom(e.target.value)} /></div>
-            <Link to={`/chat?name=${name}&room=${room}`}>
+            <Link onClick={event => (!name || !room) ? event.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
                 <button type='submit'>Sign In</button>
             </Link>
         </div>
