@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import ScrollToBottom from 'react-scroll-to-bottom';
+import './chat.css';
 
 let socket;
 
@@ -17,7 +18,7 @@ const Chat = ({ location }) => {
         const { name, room } = queryString.parse(location.search);
 
         socket = io(ENDPOINT)
-        
+
         setName(name);
         setRoom(room);
 
@@ -51,20 +52,25 @@ const Chat = ({ location }) => {
         }
     }
 
-    console.log(users);
-
     return <>
-        <div>
-        <ScrollToBottom>
-            {messages.map((message, i) => <div key={i}>{message.text}</div>)}
-        </ScrollToBottom>
-            <input value={message}
-                onChange={event => setMessage(event.target.value)}
-                onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-            />
-        </div>
-        <div>
-            {users.map(user => <p key={user.id}>{user.name}</p>)}
+        <div className='chatBody'>
+            <div className='chatWindow'>
+                <div className='chatThread'>
+                    <ScrollToBottom>
+                        {messages.map((message, i) => <div key={i}>{message.text}</div>)}
+                    </ScrollToBottom>
+                </div>
+                <div className='inputBar'>
+                    <input value={message}
+                        onChange={event => setMessage(event.target.value)}
+                        onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
+                    />
+                    <span>Send</span>
+                </div>
+            </div>
+            <div>
+                {users.map(user => <p key={user.id}>{user.name}</p>)}
+            </div>
         </div>
     </>
 }

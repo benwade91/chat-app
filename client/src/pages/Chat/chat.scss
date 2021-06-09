@@ -1,0 +1,42 @@
+@import '../../style/global-style.scss';
+
+.chatBody{
+    @include flexCenter(row);
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary;
+    background-image: url('../../style/backgrounds/cubes.png');
+}
+
+.chatWindow{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    max-width: 95vw;
+    height: 500px;
+    max-height: 80vh;
+    background-color: $quaternary;
+}
+
+.chatThread{
+    height: 90%;
+}
+
+.inputBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    max-height: 80vh;
+    background-color: $quaternary;
+    
+    input{
+        line-height: 45px;
+        width: 80%;
+    }
+    span{
+        width: 20%;
+        text-align: center;
+    }
+}

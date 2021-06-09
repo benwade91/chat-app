@@ -1,0 +1,30 @@
+$primary : #222831;
+$secondary: #393e46;
+$tertiary: #00adb5;
+$quaternary: #EEE;
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+@mixin flexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6,button{
+    font-family: 'Zen Dots', cursive;
+}
+
+button{
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px $primary;
+    cursor: pointer;
+    font-size: 20px;
+}

@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Zen Dots', cursive;
+}
+
+button {
+  border: 1px solid;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 5px #222831;
+          box-shadow: 5px 5px 5px #222831;
+  cursor: pointer;
+  font-size: 20px;
+}
+/*# sourceMappingURL=global-style.css.map */

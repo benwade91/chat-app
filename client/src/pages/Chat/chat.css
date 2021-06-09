@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Zen Dots', cursive;
+}
+
+button {
+  border: 1px solid;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 5px #222831;
+          box-shadow: 5px 5px 5px #222831;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.chatBody {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background-color: #222831;
+  background-image: url("../../style/backgrounds/cubes.png");
+}
+
+.chatWindow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 500px;
+  max-width: 95vw;
+  height: 500px;
+  max-height: 80vh;
+  background-color: #EEE;
+}
+
+.chatThread {
+  height: 90%;
+}
+
+.inputBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 10%;
+  max-height: 80vh;
+  background-color: #EEE;
+}
+
+.inputBar input {
+  line-height: 45px;
+  width: 80%;
+}
+
+.inputBar span {
+  width: 20%;
+  text-align: center;
+}
+/*# sourceMappingURL=chat.css.map */

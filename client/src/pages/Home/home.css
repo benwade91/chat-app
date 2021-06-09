@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Zen Dots', cursive;
+}
+
+button {
+  border: 1px solid;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 5px #222831;
+          box-shadow: 5px 5px 5px #222831;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.homeBody {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00adb5;
+  background-image: url("../../style/backgrounds/background.png");
+}
+
+.homeBody .loginBubble {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: black solid 1px;
+  border-radius: 20px;
+  width: 350px;
+  min-width: 30vw;
+  max-width: 90vw;
+  height: 400px;
+  max-height: 40vh;
+  background-color: rgba(34, 40, 49, 0.6);
+}
+
+.homeBody .loginBubble h1 {
+  color: #EEE;
+}
+
+.homeBody .loginBubble input {
+  line-height: 30px;
+}
+
+.homeBody .loginBubble button {
+  margin-bottom: 20px;
+  background-color: #EEE;
+}
+/*# sourceMappingURL=home.css.map */

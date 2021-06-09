@@ -1,0 +1,33 @@
+@import '../../style/global-style.scss';
+
+.homeBody{
+    @include flexCenter(row);
+    width: 100vw;
+    height: 100vh;
+    background-color: $tertiary;
+    background-image: url('../../style/backgrounds/background.png');
+
+    .loginBubble{
+        @include flexCenter(column);
+        justify-content: space-around;
+        border: black solid 1px;
+        border-radius: 20px;
+        width: 350px;
+        min-width: 30vw;
+        max-width: 90vw;
+        height: 400px;
+        max-height: 40vh;
+        background-color: rgba($color: $primary, $alpha: 0.6);
+        
+        h1 {
+            color: $quaternary;
+        }
+        input{
+            line-height: 30px;
+        }
+        button{
+            margin-bottom: 20px;
+            background-color: $quaternary;
+        }
+    }
+}
