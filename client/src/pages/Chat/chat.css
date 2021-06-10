@@ -4,7 +4,7 @@ body {
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, button {
+h1, h2, h3, h4, h5, h6, button, .sendBtn {
   font-family: 'Zen Dots', cursive;
 }
 
@@ -50,10 +50,64 @@ button {
   height: 500px;
   max-height: 80vh;
   background-color: #EEE;
+  border-radius: 10px;
 }
 
 .chatThread {
   height: 90%;
+  overflow: scroll;
+}
+
+.chatThread .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.chatThread .message .userBubble, .chatThread .message .otherBubble {
+  margin: 0 20px;
+}
+
+.chatThread .message .userBubble p, .chatThread .message .otherBubble p {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.chatThread .message .userBubble span, .chatThread .message .otherBubble span {
+  padding: 0 10px;
+}
+
+.chatThread .message .userMessage {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.chatThread .message .otherMessage {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .inputBar {
@@ -70,15 +124,41 @@ button {
   height: 10%;
   max-height: 80vh;
   background-color: #EEE;
+  border-radius: 0 0 10px 10px;
+  border-top: 1px solid black;
 }
 
 .inputBar input {
   line-height: 45px;
   width: 80%;
+  border: none;
+  border-radius: 0 0 0 10px;
+  padding: 0 0 0 20px;
 }
 
-.inputBar span {
+.inputBar .sendBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   width: 20%;
   text-align: center;
+  cursor: pointer;
+  border: 1px solid black;
+  border-left: none;
+  height: 50px;
+  color: #EEE;
+  background-color: #00adb5;
+  text-shadow: 2px 2px black;
+  border-radius: 0 0 10px 0;
 }
 /*# sourceMappingURL=chat.css.map */

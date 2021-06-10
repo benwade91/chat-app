@@ -16,10 +16,39 @@
     height: 500px;
     max-height: 80vh;
     background-color: $quaternary;
+    border-radius: 10px;
 }
 
 .chatThread{
     height: 90%;
+    overflow: scroll;
+
+    .message{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        .userBubble, .otherBubble{
+            margin: 0 20px;
+            p{
+                border: 1px solid black;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            span{padding: 0 10px;}
+        }
+        .userMessage{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .otherMessage{
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    }
 }
 
 .inputBar{
@@ -30,13 +59,28 @@
     height: 10%;
     max-height: 80vh;
     background-color: $quaternary;
+    border-radius: 0 0 10px 10px;
+    border-top: 1px solid black;
     
     input{
         line-height: 45px;
         width: 80%;
+        border: none;
+        border-radius: 0 0 0 10px;
+        padding:  0 0 0 20px;
+        
     }
-    span{
+    .sendBtn{
+        @include flexCenter(row);
         width: 20%;
         text-align: center;
+        cursor: pointer;
+        border: 1px solid black;
+        border-left: none;
+        height: 50px;
+        color: $quaternary;
+        background-color: $tertiary;
+        text-shadow: 2px 2px black;
+        border-radius: 0 0 10px 0;
     }
 }

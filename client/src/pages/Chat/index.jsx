@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
-import ScrollToBottom from 'react-scroll-to-bottom';
 import './chat.css';
 
 let socket;
@@ -52,20 +51,37 @@ const Chat = ({ location }) => {
         }
     }
 
+    // Auto scroll to bottom on new message
+    const messagesEndRef = useRef(null)
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "auto" })
+    }
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages]);
+
     return <>
         <div className='chatBody'>
             <div className='chatWindow'>
                 <div className='chatThread'>
-                    <ScrollToBottom>
-                        {messages.map((message, i) => <div key={i}>{message.text}</div>)}
-                    </ScrollToBottom>
+                    {messages.map((message, i) => <div key={i} className='message'>
+                        {message.user === 'admin' ? (
+                            <p>{message.text}</p>
+                        ) :
+                            (name.toLowerCase() === message.user ?
+                                (<div className='userMessage'><span>you</span><div className='userBubble'><p>{message.text}</p></div></div>)
+                                : (<div className='otherMessage'><div className='otherBubble'><p>{message.text}</p></div><span>{message.user}</span></div>))}
+                    </div>)}
+                    <div ref={messagesEndRef} />
                 </div>
                 <div className='inputBar'>
                     <input value={message}
                         onChange={event => setMessage(event.target.value)}
                         onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
                     />
-                    <span>Send</span>
+                    <div className='sendBtn' onClick={event => sendMessage(event)}>
+                        <span>Send</span>
+                    </div>
                 </div>
             </div>
             <div>
