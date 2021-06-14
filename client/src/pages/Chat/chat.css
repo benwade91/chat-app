@@ -28,9 +28,9 @@ button {
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
   width: 100vw;
   height: 100vh;
   background-color: #222831;
@@ -70,17 +70,21 @@ button {
           align-items: center;
 }
 
-.chatThread .message .userBubble, .chatThread .message .otherBubble {
+.chatThread .message .userBubble,
+.chatThread .message .otherBubble {
   margin: 0 20px;
+  max-width: 70%;
 }
 
-.chatThread .message .userBubble p, .chatThread .message .otherBubble p {
-  border: 1px solid black;
+.chatThread .message .userBubble p,
+.chatThread .message .otherBubble p {
   border-radius: 10px;
   padding: 10px;
+  margin-top: 5px;
 }
 
-.chatThread .message .userBubble span, .chatThread .message .otherBubble span {
+.chatThread .message .userBubble span,
+.chatThread .message .otherBubble span {
   padding: 0 10px;
 }
 
@@ -89,12 +93,23 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.chatThread .message .userMessage .userBubble p {
+  color: white;
+  background-color: #00adb5;
+  text-shadow: 1px 1px 1px black;
+  font-size: 1.5em;
 }
 
 .chatThread .message .otherMessage {
@@ -102,12 +117,19 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.chatThread .message .otherMessage .otherBubble p {
+  color: white;
+  background-color: #393e46;
+  font-size: 1.5em;
 }
 
 .inputBar {
@@ -136,6 +158,10 @@ button {
   padding: 0 0 0 20px;
 }
 
+.inputBar input:focus {
+  outline: none;
+}
+
 .inputBar .sendBtn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -160,5 +186,61 @@ button {
   background-color: #00adb5;
   text-shadow: 2px 2px black;
   border-radius: 0 0 10px 0;
+}
+
+.onlineUsers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 150px;
+  max-width: 95vw;
+  height: 500px;
+  background-color: #EEE;
+  border-radius: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+  overflow: scroll;
+}
+
+.onlineUsers p {
+  margin: 5px;
+}
+
+.onlineUsers .onlineHeader {
+  color: #EEE;
+  background-color: #00adb5;
+  text-shadow: 2px 2px black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 992px) {
+  .chatBody {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .chatBody .onlineUsers {
+    margin: 10px 0 0 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 500px;
+    max-width: 95vw;
+    height: 150px;
+    background-color: #EEE;
+    border-radius: 10px;
+  }
 }
 /*# sourceMappingURL=chat.css.map */

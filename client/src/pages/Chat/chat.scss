@@ -1,14 +1,14 @@
 @import '../../style/global-style.scss';
 
-.chatBody{
-    @include flexCenter(row);
+.chatBody {
+    @include flexCenter(row-reverse);
     width: 100vw;
     height: 100vh;
     background-color: $primary;
     background-image: url('../../style/backgrounds/cubes.png');
 }
 
-.chatWindow{
+.chatWindow {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -19,39 +19,65 @@
     border-radius: 10px;
 }
 
-.chatThread{
+.chatThread {
     height: 90%;
     overflow: scroll;
 
-    .message{
+    .message {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        .userBubble, .otherBubble{
+
+        .userBubble,
+        .otherBubble {
             margin: 0 20px;
-            p{
-                border: 1px solid black;
+            max-width: 70%;
+
+            p {
+                // border: 1px solid black;
                 border-radius: 10px;
                 padding: 10px;
+                margin-top: 5px;
             }
-            span{padding: 0 10px;}
+
+            span {
+                padding: 0 10px;
+            }
         }
-        .userMessage{
+
+        .userMessage {
             width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: flex-end;
-            align-items: center;
+            align-items: flex-end;
+
+            .userBubble p {
+                color: white;
+                background-color: $tertiary;
+                text-shadow: 1px 1px 1px black;
+                font-size: 1.5em;
+            }
         }
-        .otherMessage{
+
+        .otherMessage {
             width: 100%;
             display: flex;
-            justify-content: flex-start;
-            align-items: center;
+            flex-direction: column;
+            // justify-content: flex-start;
+            align-items: flex-start;
+
+            .otherBubble p {
+                color: white;
+                background-color: $secondary;
+                // text-shadow: 2px 1px 1px white;
+                font-size: 1.5em;
+            }
         }
     }
 }
 
-.inputBar{
+.inputBar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,16 +87,20 @@
     background-color: $quaternary;
     border-radius: 0 0 10px 10px;
     border-top: 1px solid black;
-    
-    input{
+
+    input {
         line-height: 45px;
         width: 80%;
         border: none;
         border-radius: 0 0 0 10px;
-        padding:  0 0 0 20px;
-        
+        padding: 0 0 0 20px;
+
     }
-    .sendBtn{
+    input:focus{
+        outline: none;
+    }
+
+    .sendBtn {
         @include flexCenter(row);
         width: 20%;
         text-align: center;
@@ -84,3 +114,45 @@
         border-radius: 0 0 10px 0;
     }
 }
+
+.onlineUsers{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    max-width: 95vw;
+    height: 500px;
+    background-color: $quaternary;
+    border-radius: 10px;
+    align-items: center;
+    margin-left: 10px;
+    overflow: scroll;
+
+    p{
+        margin: 5px;
+    }
+
+    .onlineHeader{
+        color: $quaternary;
+        background-color: $tertiary;
+        text-shadow: 2px 2px black;
+        padding: 10px;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .chatBody {
+      flex-direction: column-reverse;
+
+      .onlineUsers{
+        margin: 10px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        max-width: 95vw;
+        height: 150px;
+        background-color: $quaternary;
+        border-radius: 10px;
+    }
+    }
+  }

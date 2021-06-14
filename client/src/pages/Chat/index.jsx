@@ -45,7 +45,7 @@ const Chat = ({ location }) => {
     const sendMessage = (event) => {
         event.preventDefault();
 
-        if (message) {
+        if (message && message.trim().length > 0) {
             // setMessages([...messages, message])
             socket.emit('sendMessage', message, () => setMessage(''))
         }
@@ -62,6 +62,10 @@ const Chat = ({ location }) => {
 
     return <>
         <div className='chatBody'>
+            <div className='onlineUsers'>
+            <h3 className='onlineHeader'>ONLINE</h3>
+                {users.map(user => (user.name !== name.toLowerCase()) && <p key={user.id}>{user.name}</p>)}
+            </div>
             <div className='chatWindow'>
                 <div className='chatThread'>
                     {messages.map((message, i) => <div key={i} className='message'>
@@ -69,8 +73,8 @@ const Chat = ({ location }) => {
                             <p>{message.text}</p>
                         ) :
                             (name.toLowerCase() === message.user ?
-                                (<div className='userMessage'><span>you</span><div className='userBubble'><p>{message.text}</p></div></div>)
-                                : (<div className='otherMessage'><div className='otherBubble'><p>{message.text}</p></div><span>{message.user}</span></div>))}
+                                (<div className='userMessage'><div className='userBubble'><p>{message.text}</p></div></div>)
+                                : (<div className='otherMessage'><div className='otherBubble'><span>{message.user}</span><p>{message.text}</p></div></div>))}
                     </div>)}
                     <div ref={messagesEndRef} />
                 </div>
@@ -83,9 +87,6 @@ const Chat = ({ location }) => {
                         <span>Send</span>
                     </div>
                 </div>
-            </div>
-            <div>
-                {users.map(user => <p key={user.id}>{user.name}</p>)}
             </div>
         </div>
     </>
