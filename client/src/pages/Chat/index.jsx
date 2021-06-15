@@ -84,7 +84,7 @@ const Chat = ({ location }) => {
                         onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
                     />
                     <div className='sendBtn' onClick={event => sendMessage(event)}>
-                        <span>Send</span>
+                        <span>SEND</span>
                     </div>
                 </div>
             </div>
