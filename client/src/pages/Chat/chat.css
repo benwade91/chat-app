@@ -110,6 +110,7 @@ button {
   background-color: #00adb5;
   text-shadow: 1px 1px 1px black;
   font-size: 1.5em;
+  margin: 3px 0;
 }
 
 .chatThread .message .otherMessage {
@@ -130,6 +131,7 @@ button {
   color: white;
   background-color: #393e46;
   font-size: 1.5em;
+  margin: 3px 0;
 }
 
 .inputBar {
@@ -148,10 +150,11 @@ button {
   background-color: #EEE;
   border-radius: 0 0 10px 10px;
   border-top: 1px solid black;
+  z-index: 1;
 }
 
 .inputBar input {
-  line-height: 45px;
+  line-height: 50px;
   width: 80%;
   border: none;
   border-radius: 0 0 0 10px;
@@ -199,6 +202,7 @@ button {
   width: 150px;
   max-width: 95vw;
   height: 500px;
+  max-height: 80vh;
   background-color: #EEE;
   border-radius: 10px;
   -webkit-box-align: center;

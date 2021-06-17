@@ -57,6 +57,7 @@
                 background-color: $tertiary;
                 text-shadow: 1px 1px 1px black;
                 font-size: 1.5em;
+                margin: 3px 0;
             }
         }
 
@@ -72,6 +73,7 @@
                 background-color: $secondary;
                 // text-shadow: 2px 1px 1px white;
                 font-size: 1.5em;
+                margin: 3px 0;
             }
         }
     }
@@ -87,9 +89,10 @@
     background-color: $quaternary;
     border-radius: 0 0 10px 10px;
     border-top: 1px solid black;
+    z-index: 1;
 
     input {
-        line-height: 45px;
+        line-height: 50px;
         width: 80%;
         border: none;
         border-radius: 0 0 0 10px;
@@ -121,6 +124,7 @@
     width: 150px;
     max-width: 95vw;
     height: 500px;
+    max-height: 80vh;
     background-color: $quaternary;
     border-radius: 10px;
     align-items: center;

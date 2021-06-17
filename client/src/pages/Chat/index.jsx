@@ -63,8 +63,8 @@ const Chat = ({ location }) => {
     return <>
         <div className='chatBody'>
             <div className='onlineUsers'>
-            <h3 className='onlineHeader'>ONLINE</h3>
-                {users.map(user => (user.name !== name.toLowerCase()) && <p key={user.id}>{user.name}</p>)}
+                <h3 className='onlineHeader'>ONLINE</h3>
+                {users.map(user => (user.name !== name.toLowerCase()) && <p key={user.id}>{user.name.toUpperCase()}</p>)}
             </div>
             <div className='chatWindow'>
                 <div className='chatThread'>
@@ -74,7 +74,13 @@ const Chat = ({ location }) => {
                         ) :
                             (name.toLowerCase() === message.user ?
                                 (<div className='userMessage'><div className='userBubble'><p>{message.text}</p></div></div>)
-                                : (<div className='otherMessage'><div className='otherBubble'><span>{message.user}</span><p>{message.text}</p></div></div>))}
+                                : (<div className='otherMessage'>
+                                    <div className='otherBubble'>
+                                    {messages[i-1] && (message.user === messages[i-1].user) ? null : <span>{message.user.toUpperCase()}</span>}
+                                        {/* <span>{message.user.toUpperCase()}</span> */}
+                                        <p>{message.text}</p>
+                                    </div>
+                                </div>))}
                     </div>)}
                     <div ref={messagesEndRef} />
                 </div>
