@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { AiFillDelete } from "react-icons/ai";
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import './chat.css';
@@ -31,8 +32,15 @@ const Chat = ({ location }) => {
     }, [ENDPOINT, location.search])
 
     useEffect(() => {
+        //Updates message array on new message
         socket.on('message', (message) => {
             setMessages([...messages, message])
+        })
+
+        //Updates message array on delete
+        socket.on('updateMessages', (messageToDelete) => {
+            // console.log(messageToDelete);
+            setMessages(messages.filter(message => message.text !== messageToDelete.text))
         })
     }, [messages]);
 
@@ -49,6 +57,13 @@ const Chat = ({ location }) => {
             // setMessages([...messages, message])
             socket.emit('sendMessage', message, () => setMessage(''))
         }
+    }
+
+    const deleteMessage = (index) => {
+        console.log(index);
+        socket.emit('deleteMessage', messages[index], () => {
+            setMessages(messages.filter(message => message !== messages[index]))
+        })
     }
 
     // Auto scroll to bottom on new message
@@ -68,15 +83,23 @@ const Chat = ({ location }) => {
             </div>
             <div className='chatWindow'>
                 <div className='chatThread'>
-                    {messages.map((message, i) => <div key={i} className='message'>
+                    {messages.map((message, i) => <div id={i} key={i} className='message'>
                         {message.user === 'admin' ? (
                             <p>{message.text}</p>
                         ) :
                             (name.toLowerCase() === message.user ?
-                                (<div className='userMessage'><div className='userBubble'><p>{message.text}</p></div></div>)
+                                (<div className='userMessage'>
+                                    <div className='userBubble'>
+                                        <AiFillDelete
+                                            className='deleteMessage'
+                                            onClick={(e) => deleteMessage(e.target.parentElement.parentElement.parentElement.parentElement.id)}
+                                        />
+                                        <p>{message.text}</p>
+                                    </div>
+                                </div>)
                                 : (<div className='otherMessage'>
                                     <div className='otherBubble'>
-                                    {messages[i-1] && (message.user === messages[i-1].user) ? null : <span>{message.user.toUpperCase()}</span>}
+                                        {messages[i - 1] && (message.user === messages[i - 1].user) ? null : <span>{message.user.toUpperCase()}</span>}
                                         {/* <span>{message.user.toUpperCase()}</span> */}
                                         <p>{message.text}</p>
                                     </div>

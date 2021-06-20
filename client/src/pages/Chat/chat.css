@@ -93,10 +93,10 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -105,12 +105,41 @@ button {
           align-items: flex-end;
 }
 
+.chatThread .message .userMessage .userBubble {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .chatThread .message .userMessage .userBubble p {
   color: white;
   background-color: #00adb5;
   text-shadow: 1px 1px 1px black;
   font-size: 1.5em;
   margin: 3px 0;
+}
+
+.chatThread .message .userMessage .userBubble .deleteMessage {
+  display: none;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.chatThread .message .userMessage .userBubble .deleteMessage:hover {
+  color: red;
+}
+
+.chatThread .message .userMessage:hover .deleteMessage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .chatThread .message .otherMessage {

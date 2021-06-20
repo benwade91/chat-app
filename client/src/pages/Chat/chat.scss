@@ -48,16 +48,38 @@
         .userMessage {
             width: 100%;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: flex-end;
             align-items: flex-end;
 
-            .userBubble p {
-                color: white;
-                background-color: $tertiary;
-                text-shadow: 1px 1px 1px black;
-                font-size: 1.5em;
-                margin: 3px 0;
+            .userBubble {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                p {
+                    color: white;
+                    background-color: $tertiary;
+                    text-shadow: 1px 1px 1px black;
+                    font-size: 1.5em;
+                    margin: 3px 0;
+                }
+
+                .deleteMessage {
+                    display: none;
+                    font-size: 2em;
+                    cursor: pointer;
+                }
+
+                .deleteMessage:hover {
+                    color: red;
+                }
+            }
+        }
+
+        .userMessage:hover {
+            .deleteMessage {
+                display: flex;
             }
         }
 
@@ -99,7 +121,8 @@
         padding: 0 0 0 20px;
 
     }
-    input:focus{
+
+    input:focus {
         outline: none;
     }
 
@@ -118,7 +141,7 @@
     }
 }
 
-.onlineUsers{
+.onlineUsers {
     display: flex;
     flex-direction: column;
     width: 150px;
@@ -131,11 +154,11 @@
     margin-left: 10px;
     overflow: scroll;
 
-    p{
+    p {
         margin: 5px;
     }
 
-    .onlineHeader{
+    .onlineHeader {
         color: $quaternary;
         background-color: $tertiary;
         text-shadow: 2px 2px black;
@@ -146,17 +169,17 @@
 
 @media screen and (max-width: 992px) {
     .chatBody {
-      flex-direction: column-reverse;
+        flex-direction: column-reverse;
 
-      .onlineUsers{
-        margin: 10px 0 0 0;
-        display: flex;
-        flex-direction: column;
-        width: 500px;
-        max-width: 95vw;
-        height: 150px;
-        background-color: $quaternary;
-        border-radius: 10px;
+        .onlineUsers {
+            margin: 10px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            max-width: 95vw;
+            height: 150px;
+            background-color: $quaternary;
+            border-radius: 10px;
+        }
     }
-    }
-  }
+}
