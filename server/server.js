@@ -1,7 +1,7 @@
 const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
-
+const db = require("./config/connection");
 const port = process.env.PORT || 4001;
 const routes = require("./routes");
 const cors = require("cors");
@@ -11,6 +11,12 @@ const io = socketio(server, {
   cors: {
     origin: '*',
   }
+});
+
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
 });
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users')

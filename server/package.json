@@ -19,6 +19,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "http-proxy": "^1.18.1",
+    "mongodb": "^3.6.9",
+    "mongoose": "^5.12.14",
     "socket.io": "^4.1.2"
   },
   "devDependencies": {
